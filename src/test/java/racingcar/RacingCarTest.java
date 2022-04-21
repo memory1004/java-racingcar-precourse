@@ -2,6 +2,7 @@ package racingcar;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -33,18 +34,28 @@ class RacingCarTest {
     }
 
     @ParameterizedTest
-    @DisplayName("이동 회수 입력 및 레이스게시")
+    @DisplayName("이동 회수 입력 및 개별 레이스테스트")
     @ValueSource(strings = {"kia,bmw,benz,audi"})
     void inputDistanceTest(String carNames) {
-        int distance = 3;
+        int round = 3;
         String [] carArray = carNames.split(",");
         List<RacingCar> racingCars = new ArrayList<>();
         for (String carName : carArray) {
             racingCars.add(RacingCar.getNewInstance(carName));
         }
-        for (int i = 0; i < distance; i++) {
-            racingCars.forEach(x->{x.race(); x.printDistance();});
+        for (int i = 0; i < round; i++) {
+            racingCars.forEach(x->{x.start();});
             System.out.println("---------");
         }
+    }
+
+    @ParameterizedTest
+    @DisplayName("레이스단위로 테스트")
+    @ValueSource(strings = {"kia,bmw,benz,audi"})
+    void raceTest(String carNames) {
+        int round = 3;
+        String [] carArray = carNames.split(",");
+        Race race = Race.getIntance(Arrays.asList(carArray), round);
+        race.start();
     }
 }

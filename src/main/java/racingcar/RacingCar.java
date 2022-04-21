@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class RacingCar {
     private String name;
-    private int distance;
+    private int totalDistance;
 
     private RacingCar() {
     }
@@ -32,13 +32,14 @@ public class RacingCar {
         return name;
     }
 
-    public void race() {
+    public void start() {
         incrementDistance(Randoms.pickNumberInRange(0, 9));
+        printDistance();
     }
 
     private void incrementDistance(int distance) {
         if (validationGeneratedDistance(distance)) {
-            this.distance += distance;
+            this.totalDistance += distance;
         }
     }
 
@@ -47,10 +48,10 @@ public class RacingCar {
     }
 
     public void printDistance() {
-        System.out.println(getName() + ":" + getDistance());
+        System.out.println(getName() + ":" + getTotalDistance());
     }
 
-    public int getDistance() {
-        return distance;
+    public int getTotalDistance() {
+        return totalDistance;
     }
 }
