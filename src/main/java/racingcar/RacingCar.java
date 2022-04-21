@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class RacingCar {
     private String name;
     private int distance;
@@ -30,16 +32,22 @@ public class RacingCar {
         return name;
     }
 
-    public void run() {
-        incrementDistance();
+    public void race() {
+        incrementDistance(Randoms.pickNumberInRange(0, 9));
     }
 
-    private void incrementDistance() {
-        this.distance++;
+    private void incrementDistance(int distance) {
+        if (validationGeneratedDistance(distance)) {
+            this.distance += distance;
+        }
+    }
+
+    private boolean validationGeneratedDistance(int distance) {
+        return distance >= 4;
     }
 
     public void printDistance() {
-        System.out.println(distance);
+        System.out.println(getName() + ":" + getDistance());
     }
 
     public int getDistance() {
