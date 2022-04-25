@@ -48,7 +48,11 @@ public class RacingCar {
     }
 
     public void printDistance() {
-        System.out.println(getName() + ":" + getTotalDistance());
+        System.out.println(getName()+" : ");
+        for (int i = 0; i < getTotalDistance(); i++) {
+            System.out.print("-");
+        }
+        System.out.println("");
     }
 
     public int getTotalDistance() {
