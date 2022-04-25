@@ -6,26 +6,16 @@ public class RacingCar {
     private String name;
     private int totalDistance;
 
+
     private RacingCar() {
     }
 
     private RacingCar(String name) {
-        validationCarname(name);
         this.name = name;
     }
 
     public static RacingCar getNewInstance(String name) {
         return new RacingCar(name);
-    }
-
-    private void validationCarname(String carname) {
-        if (carname == null) {
-            throw new IllegalArgumentException("null일수 없음");
-        }
-
-        if (carname.length() > 5) {
-            throw new IllegalArgumentException("5글자 초과");
-        }
     }
 
     public String getName() {
@@ -48,7 +38,7 @@ public class RacingCar {
     }
 
     public void printDistance() {
-        System.out.println(getName()+" : ");
+        System.out.print(getName()+" : ");
         for (int i = 0; i < getTotalDistance(); i++) {
             System.out.print("-");
         }
