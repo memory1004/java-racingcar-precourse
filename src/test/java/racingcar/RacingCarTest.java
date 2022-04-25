@@ -23,17 +23,6 @@ class RacingCarTest {
     }
 
     @ParameterizedTest
-    @DisplayName("자동차의 이름 설정 및 호출")
-    @ValueSource(strings = {"hyundai,genesis"})
-    void validationCarnameTest(String carNames) {
-        String [] carArray = carNames.split(",");
-        for (String carName : carArray) {
-            assertThatThrownBy(()-> RacingCar.getNewInstance(carName))
-                    .isExactlyInstanceOf(IllegalArgumentException.class);
-        }
-    }
-
-    @ParameterizedTest
     @DisplayName("이동 회수 입력 및 개별 레이스테스트")
     @ValueSource(strings = {"kia,bmw,benz,audi"})
     void inputDistanceTest(String carNames) {
@@ -45,7 +34,6 @@ class RacingCarTest {
         }
         for (int i = 0; i < round; i++) {
             racingCars.forEach(x->{x.start();});
-            System.out.println("---------");
         }
     }
 
